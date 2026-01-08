@@ -1,2 +1,2 @@
 # neuro-checker_configuration
-Configuration files
+This repository will consist of installation scripts, Docker compose files, and configurations.
