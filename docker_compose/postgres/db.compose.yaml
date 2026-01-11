@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres
-    restart: always
+    restart: unless-stopped
     # set shared memory limit when using docker compose
     shm_size: 2gb
     env_file: ./db.env

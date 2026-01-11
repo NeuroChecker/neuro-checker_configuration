@@ -1,0 +1,17 @@
+services:
+  neurochecker_front-end:
+    image: ""
+    container_name: neurochecker_front-end
+    restart: unless-stopped
+    networks:
+      - proxy
+    ports:
+      - "80:80"
+    labels:
+      - "traefik.http.routers.dashboard-https.rule=Host(`neurochecker.nl`)"
+      - "traefik.http.routers.dashboard-https.entrypoints=websecure"
+      - "traefik.http.routers.dashboard-https.tls=true"
+      - "traefik.http.routers.dashboard-https.tls.certresolver=cloudflare"
+networks:
+  proxy:
+    external: true

@@ -1,0 +1,21 @@
+services:
+  traefik:
+    image: "traefik:v3.4"
+    container_name: traefik_proxy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./config/traefik.yaml:/etc/traefik/traefik.yaml:ro"
+      - "./config/dynamic_config:/etc/traefik/dynamic:ro"
+      - "./config/traefik_certs:/var/traefik/certs:rw"
+    env_file:
+      - ./traefik.env
+    networks:
+      - proxy
+networks:
+  proxy:
+    external: true

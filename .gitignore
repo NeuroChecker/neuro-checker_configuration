@@ -1,2 +1,5 @@
 *.env
-.env.*
+
+# Traefik configuration files
+docker_compose/traefik/config/dynamic_config/ext_services.yaml
+docker_compose/traefik/config/traefik.yaml

@@ -1,0 +1,9 @@
+services:
+  neurochecker_back-end:
+    image: ""
+    container_name: neurochecker_back-end
+    restart: unless-stopped
+    networks:
+      - 
+    ports:
+      - 

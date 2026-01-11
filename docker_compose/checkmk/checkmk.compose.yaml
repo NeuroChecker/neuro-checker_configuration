@@ -1,0 +1,24 @@
+services:
+    checkmk-raw:
+        # stdin & tty are for keeping the terminal always open. 
+        stdin_open: true
+        tty: true
+        ports:
+            - 5000:5000 # Web GUI
+            - 8000:8000 # Check_MK Agent
+        # Tmpfs is a fast, temporary mountable filesystem.
+        tmpfs: /opt/omd/sites/neurochecker/tmp:uid=1000,gid=1000
+        volumes:
+            - monitoring_data:/omd/sites
+            - /etc/localtime:/etc/localtime:ro
+        container_name: checkmk-monitoring
+        restart: unless-stopped
+        image: checkmk/check-mk-raw:2.4.0p18
+        env_file: ./checkmk.env
+        environment:
+            - CMK_SITE_ID=neurochecker
+            - CMK_PASSWORD=${CMK_PASSWORD}
+            - TZ:Europe/Amsterdam
+volumes:
+    monitoring_data:
+        name: checkmk_monitoring_data
