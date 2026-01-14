@@ -3,7 +3,7 @@ services:
     image: ""
     container_name: neurochecker_back-end
     restart: unless-stopped
-    networks:
-      - 
     ports:
-      - 
+      - 80:80
+    env_file:
+      - ./neurochecker_back-end.env

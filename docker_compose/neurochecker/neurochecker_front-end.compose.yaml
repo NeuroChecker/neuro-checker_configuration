@@ -6,7 +6,7 @@ services:
     networks:
       - proxy
     ports:
-      - "80:80"
+      #- "80:80" # Ports don't need to be exposed if Traefik is on the same host.
     labels:
       - "traefik.http.routers.dashboard-https.rule=Host(`neurochecker.nl`)"
       - "traefik.http.routers.dashboard-https.entrypoints=websecure"
