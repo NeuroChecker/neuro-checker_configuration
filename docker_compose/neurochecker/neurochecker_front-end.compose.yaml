@@ -1,6 +1,6 @@
 services:
   neurochecker_front-end:
-    image: ""
+    image: "devpieter/neuro-checker_frontend:latest"
     container_name: neurochecker_front-end
     restart: unless-stopped
     networks:
@@ -12,6 +12,10 @@ services:
       - "traefik.http.routers.dashboard-https.entrypoints=websecure"
       - "traefik.http.routers.dashboard-https.tls=true"
       - "traefik.http.routers.dashboard-https.tls.certresolver=cloudflare"
+      - "traefik.http.routers.dashboard-https.service=dashboard"
+      - "traefik.http.services.dashboard.loadbalancer.server.port=3000"
+    env_file:
+      - ./neurochecker_front-end.env
 networks:
   proxy:
     external: true
