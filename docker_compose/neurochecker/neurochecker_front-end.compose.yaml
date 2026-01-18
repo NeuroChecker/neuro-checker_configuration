@@ -6,14 +6,7 @@ services:
     networks:
       - proxy
     ports:
-      #- "80:80" # Ports don't need to be exposed if Traefik is on the same host.
-    labels:
-      - "traefik.http.routers.dashboard-https.rule=Host(`neurochecker.nl`)"
-      - "traefik.http.routers.dashboard-https.entrypoints=websecure"
-      - "traefik.http.routers.dashboard-https.tls=true"
-      - "traefik.http.routers.dashboard-https.tls.certresolver=cloudflare"
-      - "traefik.http.routers.dashboard-https.service=dashboard"
-      - "traefik.http.services.dashboard.loadbalancer.server.port=3000"
+      "3000:3000"
     env_file:
       - ./neurochecker_front-end.env
 networks:

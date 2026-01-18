@@ -14,10 +14,11 @@ entryPoints:
   websecure:
     address: ":443"
 providers:
-  docker:
-    endpoint: "unix:///var/run/docker.sock"
-    exposedByDefault: false
-    network: proxy
+  # Docker API version outdated in used traefik image, opted to use just file provider instead.
+  # docker:
+  #   endpoint: "unix:///var/run/docker.sock"
+  #   exposedByDefault: false
+  #   network: proxy
   file:
     directory: /etc/traefik/dynamic
     watch: true

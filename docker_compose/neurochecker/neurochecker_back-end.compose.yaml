@@ -1,6 +1,6 @@
 services:
   neurochecker_back-end:
-    image: ""
+    image: "devpieter/neuro-checker_backend:latest"
     container_name: neurochecker_back-end
     restart: unless-stopped
     ports:
